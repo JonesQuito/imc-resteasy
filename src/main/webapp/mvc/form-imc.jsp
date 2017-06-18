@@ -20,15 +20,17 @@
 						+ "&altura=" + document.forms["formulario"].elements["altura"].value
 						+ "&sexo=" + document.forms["formulario"].elements["sexo"].value
 			}).then(function(data) {
-			document.getElementById("imc").innerHtml = data.imc;	
+			document.getElementById("imc").innerHTML = data.imc;	
 			document.getElementById("situacao").innerHTML = data.situacao;
-			alert("Imc: " + data.imc + "\nSituação: " + data.situacao);
+			
 		});
 	}
-</script>	
+</script>
+
 </head>
 
-<body >
+<body>
+<div id="textDiv"></div>
 	<header class="cabecalho">
 		<h3>Calcula o IMC</h3>
 	</header>
@@ -38,10 +40,10 @@
 			<form name="formulario" method="get">
 				<label for="peso">Peso:</label> <input class="form-control"
 					type="number" step="0.01" name="peso" id="peso"
-					placeholder="Informe seu peso" /> <label for="altura">Altura:</label>
+					placeholder="Informe seu peso" /> <label for="altura" >Altura:</label>
 				<input class="form-control" type="number" step="0.01" name="altura"
 					id="altura" placeholder="Informe sua alura" /> <label for="sexo">Sexo:</label>
-				<select class="form-control" name="sexo" id="sexo">
+				<select class="form-control" name="sexo" id="sexo" >
 					<option value="masculino">Masculino</option>
 					<option value="feminino">Feminino</option>
 				</select>
@@ -61,4 +63,5 @@
 		</div>
 	</div>
 </body>
+
 </html>
