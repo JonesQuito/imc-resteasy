@@ -9,22 +9,24 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/style.css" />
 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <script>
-	function calcular() {
-		$.ajax({
-			dataType : "json",
-			url : "http://localhost:9090/imc-resteasy/api/imcjaxrs/calcularimc?peso="
-						+ document.forms["formulario"].elements["peso"].value
-						+ "&altura=" + document.forms["formulario"].elements["altura"].value
-						+ "&sexo=" + document.forms["formulario"].elements["sexo"].value
-			}).then(function(data) {
-			document.getElementById("imc").innerHTML = data.imc;	
-			document.getElementById("situacao").innerHTML = data.situacao;
-			
-		});
-	}
+function calcular() {
+	
+	$.ajax({
+		url: "http://localhost:9090/imc-resteasy/api/imcjaxrs/calcularimc?peso=80&altura=1.77&sexo=masculino",
+		dataType : 'json',
+		url : "http://localhost:9090/imc-resteasy/api/imcjaxrs/calcularimc?peso="
+					+ document.forms["formulario"].elements["peso"].value
+					+ "&altura=" + document.forms["formulario"].elements["altura"].value
+					+ "&sexo=" + document.forms["formulario"].elements["sexo"].value ,			
+		}).then(function(data) {	
+		 $("#imc").html(data.imc);
+		 $("#situacao").html(data.situacao);
+	});
+}
 </script>
 
 </head>
@@ -36,6 +38,7 @@
 	</header>
 
 	<div class="interface">
+	
 		<div class="form">
 			<form name="formulario" method="get">
 				<label for="peso">Peso:</label> <input class="form-control"
@@ -50,14 +53,15 @@
 
 				<hr>
 				<label for="altura">Altura:</label>
-				<button class="form-control btn btn-success" onclick="calcular()">Calcular IMC</button>
+				<button id="button" class="form-control btn btn-success" onclick="calcular()">Calcular IMC</button> 
+			
 				<hr>
 			</form>
-			<div class="alert alert-success" role="alert"
-				style="margin-top: 45px">
-				<label>IMC:</label>  		<p id="imc">		</p> <br> 
-				<label>Situação:</label> 	<p id="situacao">	</p>
-				
+			<div class="alert alert-success" role="alert"style="margin-top: 45px">
+				<div>
+					<label>IMC:</label><p id="imc"></p> 
+					<label>Situação:</label><p id="situacao"></p>
+				</div>
 			</div>
 
 		</div>
