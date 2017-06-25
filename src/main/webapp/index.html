@@ -1,17 +1,53 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Aplicação Web</title>
-  </head>
-  <body>
-    <h1>Laboratório</h1>
 
-    <hr />
-    <a href="mvc/form-imc.jsp">IMC COM RESTEASY</a>
-    <hr />
-  
-    <h2>Imagem</h2>
-    <img src="bacana-01.jpg" />
-  </body>
- </html>
+<head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/requisicao.js"></script>
+</head>
+
+<body>
+<h1 style="text-align: center;">RestApi IMC</h1>
+<hr/>
+<div class="interface" box-shadow: 0px 0px 5px rgba(0,0,0,.5);">
+	
+		<div class="form">
+		
+			<label for="peso">Peso:</label> 
+			<input class="form-control" type="number" id="peso" placeholder="Informe seu peso" /> 
+			<label for="altura" >Altura:</label>
+			<input class="form-control" type="number" id="altura" placeholder="Informe sua alura" /> 
+			<label for="sexo">Sexo:</label>
+			<select class="form-control" name="sexo" id="sexo" >
+				<option value="masculino">Masculino</option>
+				<option value="feminino">Feminino</option>
+			</select>
+
+				<hr>
+				<label for="altura">Altura:</label>
+				<button id="button" class="form-control btn btn-success" onclick="calcular()">Calcular IMC</button> 
+			
+				<hr>
+
+			<div class="alert alert-success" role="alert"style="margin-top: 45px">
+				<div>
+					<label>IMC:</label><p id="div"></p> 
+					<label>Situa��o:</label><p id="situacao"></p>
+					<label>Peso:</label><p id="idPeso"></p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+<hr/>
+
+	<footer style="text-align: center;">
+		<h3>Desenvolvido por Jones Quito</h3>
+	</footer>
+	<hr/>
+
+
+</body>
+</html>
